@@ -98,8 +98,8 @@ namespace K2Field.SmartForms.Workspace.Data
             }
         }
 
-        private ObservableCollection<WorkspaceTeam> workspaceusers;
-        public virtual ObservableCollection<WorkspaceTeam> WorkspaceUsers
+        private ObservableCollection<WorkspaceUser> workspaceusers;
+        public virtual ObservableCollection<WorkspaceUser> WorkspaceUsers
         {
             get
             {

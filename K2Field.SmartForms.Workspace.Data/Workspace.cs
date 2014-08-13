@@ -60,7 +60,7 @@ namespace K2Field.SmartForms.Workspace.Data
             {
                 if (smartformsruntimeurl != value)
                 {
-                    name = value;
+                    smartformsruntimeurl = value;
                     NotifyPropertyChanged("SmartFormsRuntimeUrl");
                 }
             }

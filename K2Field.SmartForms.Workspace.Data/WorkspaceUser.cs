@@ -23,16 +23,16 @@ namespace K2Field.SmartForms.Workspace.Data
         //    }
         //}
 
-        private string name;
-        public string Name
+        private string username;
+        public string Username
         {
-            get { return name; }
+            get { return username; }
             set
             {
-                if (name != value)
+                if (username != value)
                 {
-                    name = value;
-                    NotifyPropertyChanged("Name");
+                    username = value;
+                    NotifyPropertyChanged("Username");
                 }
             }
         }

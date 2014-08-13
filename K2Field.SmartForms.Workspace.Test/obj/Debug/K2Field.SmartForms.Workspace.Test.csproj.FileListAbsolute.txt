@@ -1,0 +1,17 @@
+C:\Development\K2Field.SmartForms.Workspace\K2Field.SmartForms.Workspace.Test\bin\Debug\K2Field.SmartForms.Workspace.Test.exe.config
+C:\Development\K2Field.SmartForms.Workspace\K2Field.SmartForms.Workspace.Test\obj\Debug\K2Field.SmartForms.Workspace.Test.csprojResolveAssemblyReference.cache
+C:\Development\K2Field.SmartForms.Workspace\K2Field.SmartForms.Workspace.Test\obj\Debug\K2Field.SmartForms.Workspace.Test.Form1.resources
+C:\Development\K2Field.SmartForms.Workspace\K2Field.SmartForms.Workspace.Test\obj\Debug\K2Field.SmartForms.Workspace.Test.Properties.Resources.resources
+C:\Development\K2Field.SmartForms.Workspace\K2Field.SmartForms.Workspace.Test\obj\Debug\K2Field.SmartForms.Workspace.Test.csproj.GenerateResource.Cache
+C:\Development\K2Field.SmartForms.Workspace\K2Field.SmartForms.Workspace.Test\bin\Debug\K2Field.SmartForms.Workspace.Test.exe
+C:\Development\K2Field.SmartForms.Workspace\K2Field.SmartForms.Workspace.Test\bin\Debug\K2Field.SmartForms.Workspace.Test.pdb
+C:\Development\K2Field.SmartForms.Workspace\K2Field.SmartForms.Workspace.Test\bin\Debug\EntityFramework.dll
+C:\Development\K2Field.SmartForms.Workspace\K2Field.SmartForms.Workspace.Test\bin\Debug\EntityFramework.SqlServer.dll
+C:\Development\K2Field.SmartForms.Workspace\K2Field.SmartForms.Workspace.Test\bin\Debug\K2Field.SmartForms.Workspace.Data.dll
+C:\Development\K2Field.SmartForms.Workspace\K2Field.SmartForms.Workspace.Test\bin\Debug\K2Field.SmartForms.Workspace.Model.dll
+C:\Development\K2Field.SmartForms.Workspace\K2Field.SmartForms.Workspace.Test\bin\Debug\K2Field.SmartForms.Workspace.Data.pdb
+C:\Development\K2Field.SmartForms.Workspace\K2Field.SmartForms.Workspace.Test\bin\Debug\K2Field.SmartForms.Workspace.Model.pdb
+C:\Development\K2Field.SmartForms.Workspace\K2Field.SmartForms.Workspace.Test\bin\Debug\EntityFramework.xml
+C:\Development\K2Field.SmartForms.Workspace\K2Field.SmartForms.Workspace.Test\bin\Debug\EntityFramework.SqlServer.xml
+C:\Development\K2Field.SmartForms.Workspace\K2Field.SmartForms.Workspace.Test\obj\Debug\K2Field.SmartForms.Workspace.Test.exe
+C:\Development\K2Field.SmartForms.Workspace\K2Field.SmartForms.Workspace.Test\obj\Debug\K2Field.SmartForms.Workspace.Test.pdb

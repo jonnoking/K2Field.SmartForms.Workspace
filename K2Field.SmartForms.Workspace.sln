@@ -5,6 +5,14 @@ VisualStudioVersion = 12.0.30723.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "K2Field.SmartForms.Workspace.Data", "K2Field.SmartForms.Workspace.Data\K2Field.SmartForms.Workspace.Data.csproj", "{2CC41503-16AA-4C66-903C-F3507C3A72D9}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "K2Field.SmartForms.Workspace.Model", "K2Field.SmartForms.Workspace.Model\K2Field.SmartForms.Workspace.Model.csproj", "{F365FB2F-6E77-4CD7-9B2D-BA96D5F3EA72}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "K2Field.SmartForms.Workspace.Sandbox", "K2Field.SmartForms.Workspace.Sandbox\K2Field.SmartForms.Workspace.Sandbox.csproj", "{88BCC356-F0B2-4ACD-862B-E4AB47AE14C8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "K2Field.SmartForms.Workspace.Test", "K2Field.SmartForms.Workspace.Test\K2Field.SmartForms.Workspace.Test.csproj", "{9E4C1922-4B4D-4791-A982-8ABF63C56F72}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "K2Field.SmartForms.Workspace.API", "K2Field.SmartForms.Workspace.API\K2Field.SmartForms.Workspace.API.csproj", "{F579F02E-67A0-4558-A0D5-09CBDE8640B8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +23,22 @@ Global
 		{2CC41503-16AA-4C66-903C-F3507C3A72D9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2CC41503-16AA-4C66-903C-F3507C3A72D9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2CC41503-16AA-4C66-903C-F3507C3A72D9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F365FB2F-6E77-4CD7-9B2D-BA96D5F3EA72}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F365FB2F-6E77-4CD7-9B2D-BA96D5F3EA72}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F365FB2F-6E77-4CD7-9B2D-BA96D5F3EA72}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F365FB2F-6E77-4CD7-9B2D-BA96D5F3EA72}.Release|Any CPU.Build.0 = Release|Any CPU
+		{88BCC356-F0B2-4ACD-862B-E4AB47AE14C8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{88BCC356-F0B2-4ACD-862B-E4AB47AE14C8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{88BCC356-F0B2-4ACD-862B-E4AB47AE14C8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{88BCC356-F0B2-4ACD-862B-E4AB47AE14C8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9E4C1922-4B4D-4791-A982-8ABF63C56F72}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9E4C1922-4B4D-4791-A982-8ABF63C56F72}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9E4C1922-4B4D-4791-A982-8ABF63C56F72}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9E4C1922-4B4D-4791-A982-8ABF63C56F72}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F579F02E-67A0-4558-A0D5-09CBDE8640B8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F579F02E-67A0-4558-A0D5-09CBDE8640B8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F579F02E-67A0-4558-A0D5-09CBDE8640B8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F579F02E-67A0-4558-A0D5-09CBDE8640B8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
