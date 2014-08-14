@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using K2Field.SmartForms.Workspace.Model;
 using System.Data.Entity;
+using System.Collections.ObjectModel;
 
 namespace K2Field.SmartForms.Workspace.Test
 {
@@ -27,9 +28,91 @@ namespace K2Field.SmartForms.Workspace.Test
             using (var unit = new ApplicationUnit())
             {
                 Data.WorkspaceUser u = new Data.WorkspaceUser() { Username = @"K2:denallix\administrator", FQN = @"denallix\administrator", DisplayName = "Administrator", Email = "administrator@denallix.com", IsActive = true };
+
+
+
+                Data.WorkspaceLink link1a = new Data.WorkspaceLink()
+                {
+                    Name = "mytasks",
+                    DisplayName = "My Tasks",
+                    IsEnabled = true,
+                    IsSmartForm = true,
+                    Level = 1,
+                    Url = "https://k2.denallix.com/Runtime/Runtime/View/Demo+CRM+Account+List/",
+                    Type = "Link"
+                };
+
+                Data.WorkspaceLink link1b = new Data.WorkspaceLink()
+                {
+                    Name = "teamtasks",
+                    DisplayName = "Team Tasks",
+                    IsEnabled = true,
+                    IsSmartForm = true,
+                    Level = 1,
+                    Url = "https://k2.denallix.com/Runtime/Runtime/View/Demo+CRM+Account+List/",
+                    Type = "Link"
+                };
+
+                Data.WorkspaceLink link1c = new Data.WorkspaceLink()
+                {
+                    Name = "hrtasks",
+                    DisplayName = "HR Tasks",
+                    IsEnabled = true,
+                    IsSmartForm = true,
+                    Level = 1,
+                    Url = "https://k2.denallix.com/Runtime/Runtime/View/Demo+CRM+Account+List/",
+                    Type = "Link"
+                };
+
+                ObservableCollection<Data.WorkspaceLink> tasks = new ObservableCollection<Data.WorkspaceLink>();
+                tasks.Add(link1a);
+                tasks.Add(link1b);
+                tasks.Add(link1c);
+
+                Data.WorkspaceLink link1 = new Data.WorkspaceLink()
+                {
+                    Name = "tasks",
+                    DisplayName = "Tasks",
+                    IsEnabled = true,
+                    IsSmartForm = false,
+                    Level = 0,
+                    Type = "Heading",
+                    ChildLinks = tasks
+                };
+
+
+                Data.WorkspaceLink link2 = new Data.WorkspaceLink()
+                {
+                    Name = "apps",
+                    DisplayName = "Apps",
+                    IsEnabled = true,
+                    IsSmartForm = false,
+                    Level = 0,
+                    Type = "Heading"
+                };
+
+
+                Data.WorkspaceLink link3 = new Data.WorkspaceLink()
+                {
+                    Name = "dashboards",
+                    DisplayName = "Dashboards",
+                    IsEnabled = true,
+                    IsSmartForm = false,
+                    Level = 0,
+                    Type = "Heading"
+                };
+
+                ObservableCollection<Data.WorkspaceLink> headings = new ObservableCollection<Data.WorkspaceLink>();
+                headings.Add(link1);
+                headings.Add(link2);
+                headings.Add(link3);
+
+                    //Url = "https://k2.denallix.com/Runtime/Runtime/View/Demo+CRM+Account+List/",
+                
+
                 unit.WorklistUsers.Add(u);
 
-                Data.Workspace w = new Data.Workspace() { DisplayName = "Workspace", Name = "workspace", SmartFormsRuntimeUrl = "https://k2.denallix.com/runtime/" };
+                Data.Workspace w = new Data.Workspace() { DisplayName = "Workspace", Name = "workspace", SmartFormsRuntimeUrl = "https://k2.denallix.com/runtime/", Links = headings };
                 unit.Workspaces.Add(w);
 
                 int rows = unit.SaveChanges();

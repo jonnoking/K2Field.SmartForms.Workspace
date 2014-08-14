@@ -20,8 +20,7 @@ namespace K2Field.SmartForms.Workspace.API.Controllers.API
             catch (Exception ex)
             {
                 return BadRequest(ex.Message);
-            }
-            
+            }            
         }
 
         // GET: api/test/5
@@ -44,17 +43,14 @@ namespace K2Field.SmartForms.Workspace.API.Controllers.API
             {
                 if (ex.InnerException != null)
                 {
-                    //throw new HttpResponseException(Request.CreateResponse(HttpStatusCode.BadRequest, ex.InnerException.Message));
                     return BadRequest(ex.InnerException.Message);
                 }
                 else if (ex.Message != null)
                 {
-                    //throw new HttpResponseException(Request.CreateResponse(HttpStatusCode.BadRequest, ex.Message));
                     return BadRequest(ex.Message);
                 }
                 else
                 {
-                    //throw new HttpResponseException(Request.CreateResponse(HttpStatusCode.BadRequest, "something bad"));
                     return BadRequest("something bad");
                 }
             }

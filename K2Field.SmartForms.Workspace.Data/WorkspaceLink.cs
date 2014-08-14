@@ -153,6 +153,20 @@ namespace K2Field.SmartForms.Workspace.Data
             }
         }
 
+        private int sequence;
+        public int Sequence
+        {
+            get { return sequence; }
+            set
+            {
+                if (sequence != value)
+                {
+                    sequence = value;
+                    NotifyPropertyChanged("Sequence");
+                }
+            }
+        }
+
         private ObservableCollection<WorkspaceLink> childlinks;
         public virtual ObservableCollection<WorkspaceLink> ChildLinks
         {
