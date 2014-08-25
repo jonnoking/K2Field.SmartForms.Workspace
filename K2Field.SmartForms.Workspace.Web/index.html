@@ -315,10 +315,14 @@
 		</div>
 		<!--Start Content-->
 		<div id="content" class="col-xs-12 col-sm-10">
-			<div class="preloader">
+			<!--<div class="preloader">
 				<img src="img/devoops_getdata.gif" class="devoops-getdata" alt="preloader"/>
-			</div>
-			<div id="ajax-content"></div>
+			</div>-->
+			<!--<div id="ajax-content">
+                <iframe width="100%" height="100%" frameborder="0" src="https://k2.denallix.com/designer/"></iframe>
+
+            </div>-->
+            <iframe width="100%" height="100%" frameborder="0" src="https://k2.denallix.com/designer/"></iframe>
 		</div>
 		<!--End Content-->
 	</div>
@@ -337,6 +341,185 @@
 <script src="plugins/tinymce/jquery.tinymce.min.js"></script>
 <!-- All functions for this theme + document.ready processing -->
 <script src="js/devoops.js"></script>
+
+
+
+    <script src="Scripts/knockout-3.2.0.js"></script>
+    <script src="Scripts/knockout.mapping-latest.js"></script>
+
+
+    <script type="text/javascript">
+
+        function koworkspace(data) {
+
+            if (data && data.Id) {
+                this.Id = ko.observable(data.Id);
+            } else {
+                this.Id = ko.observable();
+            }
+
+            if (data && data.Name) {
+                this.Name = ko.observable(data.Name);
+            } else {
+                this.Name = ko.observable();
+            }
+
+            if (data && data.DisplayName) {
+                this.DisplayName = ko.observable(data.DisplayName);
+            } else {
+                this.DisplayName = ko.observable();
+            }
+
+            if (data && data.SmartFormsRuntimeUrl) {
+                this.SmartFormsRuntimeUrl = ko.observable(data.SmartFormsRuntimeUrl);
+            } else {
+                this.SmartFormsRuntimeUrl = ko.observable();
+            }
+
+            if (data && data.StartUrl) {
+                this.StartUrl = ko.observable(data.StartUrl);
+            } else {
+                this.StartUrl = ko.observable();
+            }
+
+            if (data && data.StartUrl) {
+                this.StartUrl = ko.observable(data.StartUrl);
+            } else {
+                this.StartUrl = ko.observable();
+            }
+
+
+            if (data && data.Links) {
+                this.Links = ko.observableArray([]);
+
+                for (var i = 0; i < data.Links.length; i++) {
+                    this.Links.push(new kolink(data.Links[i]));
+                }
+
+            } else {
+                this.Links = ko.observableArray([]);
+            }
+        }
+
+        function kolink(data) {
+
+            if (data && data.Id) {
+                this.Id = ko.observable(data.Id);
+            } else {
+                this.Id = ko.observable();
+            }
+
+            if (data && data.Name) {
+                this.Name = ko.observable(data.Name);
+            } else {
+                this.Name = ko.observable();
+            }
+
+            if (data && data.DisplayName) {
+                this.DisplayName = ko.observable(data.DisplayName);
+            } else {
+                this.DisplayName = ko.observable();
+            }
+
+            if (data && data.SmartForm) {
+                this.SmartForm = ko.observable(data.SmartForm);
+            } else {
+                this.SmartForm = ko.observable();
+            }
+
+            if (data && data.Url) {
+                this.Url = ko.observable(data.Url);
+            } else {
+                this.Url = ko.observable();
+            }
+
+            if (data && data.IsSmartForm) {
+                this.IsSmartForm = ko.observable(data.IsSmartForm);
+            } else {
+                this.IsSmartForm = ko.observable();
+            }
+
+            if (data && data.Level) {
+                this.Level = ko.observable(data.Level);
+            } else {
+                this.Level = ko.observable();
+            }
+
+            if (data && data.Type) {
+                this.Type = ko.observable(data.Type);
+            } else {
+                this.Type = ko.observable();
+            }
+
+            if (data && data.Icon) {
+                this.Icon = ko.observable(data.Icon);
+            } else {
+                this.Icon = ko.observable();
+            }
+
+            if (data && data.IsEnabled) {
+                this.IsEnabled = ko.observable(data.IsEnabled);
+            } else {
+                this.IsEnabled = ko.observable();
+            }
+
+            if (data && data.Sequence) {
+                this.Sequence = ko.observable(data.Sequence);
+            } else {
+                this.Sequence = ko.observable();
+            }
+
+            if (data && data.ChildLinks) {
+                this.ChildLinks = ko.observableArray([]);
+
+                for (var i = 0; i < data.ChildLinks.length; i++) {
+                    this.ChildLinks.push(new kolink(data.ChildLinks[i]));
+                }
+
+            } else {
+                this.ChildLinks = ko.observableArray([]);
+            }
+
+        }
+
+        var baseUrl = "http://localhost:1476/";
+
+        var workspaceViewModel = {
+
+            rawWorkspace: [],
+            workspace: ko.observable(),
+
+            load: function (id) {
+                $.ajax({
+                    url: baseUrl+'/api/workspace/' + id,
+                    method: 'GET',
+                    dataType: 'json',
+                    success: function (data) {
+                        workspaceViewModel.rawWorkspace = data;
+                        //locationViewModel.location(ko.mapping.fromJS(data));
+                        workspaceViewModel.workspace(new koworkspace(data));
+
+                        $.event.trigger("workspaceLoadSuccess");
+
+                    },
+                    error: function (request, textStatus, errorThrown) {
+                        $.event.trigger('workspaceLoadError');
+
+                        alert("Error: " + textStatus + " :: " + errorThrown);
+                    },
+                    complete: function (request, textStatus) {
+                        $.event.trigger('workspaceLoadComplete');
+
+                    }
+                });
+
+            },
+
+        };
+
+        workspaceViewModel.load('9c6537b4-6823-e411-8374-000c297c26af');
+        var ii = 0;
+    </script>
 
 </body>
 </html>

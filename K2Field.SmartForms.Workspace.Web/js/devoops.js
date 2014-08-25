@@ -2301,11 +2301,12 @@ $(document).ready(function () {
 	});
 
 // loads content area
-	var ajax_url = location.hash.replace(/^#/, '');
-	if (ajax_url.length < 1) {
-		ajax_url = 'ajax/dashboard.html';
-	}
-	LoadAjaxContent(ajax_url);
+	//var ajax_url = location.hash.replace(/^#/, '');
+	//if (ajax_url.length < 1) {
+	//    //ajax_url = 'ajax/dashboard.html';
+	//    ajax_url = 'https://k2.denallix.com/Designer/';
+	//}
+	//LoadAjaxContent(ajax_url);
 
 
 	$('.main-menu').on('click', 'a', function (e) {
