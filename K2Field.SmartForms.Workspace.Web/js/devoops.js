@@ -2309,6 +2309,9 @@ $(document).ready(function () {
 	//LoadAjaxContent(ajax_url);
 
 
+    // JJK: Need to look at click event to load Url into iframe rather than ajax call
+
+
 	$('.main-menu').on('click', 'a', function (e) {
 		var parents = $(this).parents('li');
 		var li = $(this).closest('li.dropdown');
@@ -2347,7 +2350,11 @@ $(document).ready(function () {
 			}
 			var url = $(this).attr('href');
 			window.location.hash = url;
+
+            // JJK: replace this?
 			LoadAjaxContent(url);
+
+
 		}
 		if ($(this).attr('href') == '#') {
 			e.preventDefault();
