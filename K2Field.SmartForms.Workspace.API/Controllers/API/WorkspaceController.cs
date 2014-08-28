@@ -4,6 +4,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using System.Web.Http.Cors;
 
 namespace K2Field.SmartForms.Workspace.API.Controllers.API
 {
@@ -11,6 +12,7 @@ namespace K2Field.SmartForms.Workspace.API.Controllers.API
     {
         Model.ApplicationUnit _unit = new Model.ApplicationUnit();
 
+        [EnableCors(origins: "*", headers: "*", methods: "*", SupportsCredentials=true)]
         public IHttpActionResult Get()
         {
             try
@@ -24,6 +26,7 @@ namespace K2Field.SmartForms.Workspace.API.Controllers.API
         }
 
         // GET: api/test/5
+        [EnableCors(origins: "*", headers: "*", methods: "*", SupportsCredentials = true)]
         public IHttpActionResult Get(Guid id)
         {
             Data.Workspace w = null;

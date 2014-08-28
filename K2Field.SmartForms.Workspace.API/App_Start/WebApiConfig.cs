@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Http;
+using System.Web.Http.Cors;
 
 namespace K2Field.SmartForms.Workspace.API
 {
@@ -13,6 +14,12 @@ namespace K2Field.SmartForms.Workspace.API
 
             // Web API routes
             config.MapHttpAttributeRoutes();
+
+            //Endable Cors
+            //var cors = new EnableCorsAttribute("https://localhost:44301", "*", "*");
+            //config.EnableCors(cors);
+
+            config.EnableCors();
 
             config.Routes.MapHttpRoute(
                 name: "DefaultApi",

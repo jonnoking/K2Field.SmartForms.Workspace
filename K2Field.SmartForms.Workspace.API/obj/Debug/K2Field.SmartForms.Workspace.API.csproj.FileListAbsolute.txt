@@ -38,3 +38,6 @@ C:\Development\K2Field.SmartForms.Workspace\K2Field.SmartForms.Workspace.API\obj
 C:\Development\K2Field.SmartForms.Workspace\K2Field.SmartForms.Workspace.API\obj\Debug\K2Field.SmartForms.Workspace.API.pdb
 C:\Development\K2Field.SmartForms.Workspace\K2Field.SmartForms.Workspace.API\bin\EntityFramework.SqlServer.dll
 C:\Development\K2Field.SmartForms.Workspace\K2Field.SmartForms.Workspace.API\bin\EntityFramework.SqlServer.xml
+C:\Development\K2Field.SmartForms.Workspace\K2Field.SmartForms.Workspace.API\bin\System.Web.Cors.dll
+C:\Development\K2Field.SmartForms.Workspace\K2Field.SmartForms.Workspace.API\bin\System.Web.Http.Cors.dll
+C:\Development\K2Field.SmartForms.Workspace\K2Field.SmartForms.Workspace.API\bin\System.Web.Http.Cors.xml
