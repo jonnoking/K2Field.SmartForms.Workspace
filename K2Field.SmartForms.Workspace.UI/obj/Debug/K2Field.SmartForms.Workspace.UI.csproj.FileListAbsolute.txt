@@ -1,0 +1,6 @@
+C:\Development\K2Field.SmartForms.Workspace\K2Field.SmartForms.Workspace.UI\bin\K2Field.SmartForms.Workspace.UI.dll.config
+C:\Development\K2Field.SmartForms.Workspace\K2Field.SmartForms.Workspace.UI\bin\K2Field.SmartForms.Workspace.UI.dll
+C:\Development\K2Field.SmartForms.Workspace\K2Field.SmartForms.Workspace.UI\bin\K2Field.SmartForms.Workspace.UI.pdb
+C:\Development\K2Field.SmartForms.Workspace\K2Field.SmartForms.Workspace.UI\obj\Debug\K2Field.SmartForms.Workspace.UI.csprojResolveAssemblyReference.cache
+C:\Development\K2Field.SmartForms.Workspace\K2Field.SmartForms.Workspace.UI\obj\Debug\K2Field.SmartForms.Workspace.UI.dll
+C:\Development\K2Field.SmartForms.Workspace\K2Field.SmartForms.Workspace.UI\obj\Debug\K2Field.SmartForms.Workspace.UI.pdb

@@ -148,7 +148,7 @@
 
                 <!--ko if: IsHeading() == false -->
                 <li>
-                    <a data-bind="attr:{href: Url}" class="active ajax-link">
+                    <a data-bind="attr:{href: Url}" class="ajax-link">
                         <i data-bind="attr:{class:Icon}"></i>
                         <span class="hidden-xs" data-bind="text: DisplayName"></span>
                     </a>
@@ -182,7 +182,7 @@
                 <iframe width="100%" height="100%" frameborder="0" src="https://k2.denallix.com/designer/"></iframe>
 
             </div>-->
-            <iframe width="100%" height="100%" frameborder="0" src="https://k2.denallix.com/designer/"></iframe>
+            <iframe id="contentFrame" width="100%" height="100%" frameborder="0" src="https://k2.denallix.com/designer/"></iframe>
 		</div>
 		<!--End Content-->
 	</div>
@@ -519,7 +519,11 @@
                 //    return true;
                 //}, data);
 
-                this.IsHeading = ko.observable(true);
+                if (data.ChildLinks.length > 0) {
+                    this.IsHeading = ko.observable(true);
+                } else {
+                    this.IsHeading = ko.observable(false);
+                }
 
             } else {
                 this.ChildLinks = ko.observableArray([]);
@@ -533,7 +537,8 @@
 
         }
 
-        var baseUrl = "http://localhost:1476";
+        //var baseUrl = "http://localhost:1476";
+        var baseUrl = "https://localhost:44302";
 
         var workspaceViewModel = {
 

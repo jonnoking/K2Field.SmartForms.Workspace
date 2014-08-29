@@ -2349,11 +2349,12 @@ $(document).ready(function () {
 				$('#content').removeClass('full-content');
 			}
 			var url = $(this).attr('href');
-			window.location.hash = url;
+			//window.location.hash = url;
 
             // JJK: replace this?
-			LoadAjaxContent(url);
+			//LoadAjaxContent(url);
 
+			$('#contentFrame').attr('src', url)
 
 		}
 		if ($(this).attr('href') == '#') {
