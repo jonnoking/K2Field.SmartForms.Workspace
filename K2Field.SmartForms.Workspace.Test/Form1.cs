@@ -39,7 +39,9 @@ namespace K2Field.SmartForms.Workspace.Test
                     IsSmartForm = true,
                     Level = 1,
                     Url = "https://k2.denallix.com/Runtime/Runtime/View/Demo+CRM+Account+List/",
-                    Type = "Link"
+                    Type = "Link",
+                    Icon = "fa fa-bar-chart-o fa-fw",
+                    MinHeight = 500
                 };
 
                 Data.WorkspaceLink link1b = new Data.WorkspaceLink()
@@ -50,7 +52,9 @@ namespace K2Field.SmartForms.Workspace.Test
                     IsSmartForm = true,
                     Level = 1,
                     Url = "https://k2.denallix.com/Runtime/Runtime/View/Demo+CRM+Account+List/",
-                    Type = "Link"
+                    Type = "Link",
+                    Icon = "fa fa-bar-chart-o fa-fw",
+                    MinHeight = 500
                 };
 
                 Data.WorkspaceLink link1c = new Data.WorkspaceLink()
@@ -61,7 +65,9 @@ namespace K2Field.SmartForms.Workspace.Test
                     IsSmartForm = true,
                     Level = 1,
                     Url = "https://k2.denallix.com/Runtime/Runtime/View/Demo+CRM+Account+List/",
-                    Type = "Link"
+                    Type = "Link",
+                    Icon = "fa fa-bar-chart-o fa-fw",
+                    MinHeight = 500
                 };
 
                 ObservableCollection<Data.WorkspaceLink> tasks = new ObservableCollection<Data.WorkspaceLink>();
@@ -77,7 +83,8 @@ namespace K2Field.SmartForms.Workspace.Test
                     IsSmartForm = false,
                     Level = 0,
                     Type = "Heading",
-                    ChildLinks = tasks
+                    ChildLinks = tasks,
+                    Icon = "fa fa-bar-chart-o fa-fw",
                 };
 
 
@@ -88,7 +95,9 @@ namespace K2Field.SmartForms.Workspace.Test
                     IsEnabled = true,
                     IsSmartForm = false,
                     Level = 0,
-                    Type = "Heading"
+                    Url = "https://k2.denallix.com/Runtime/Runtime/View/Demo+CRM+Account+List/",
+                    Type = "Heading",
+                    Icon = "fa fa-bar-chart-o fa-fw",
                 };
 
 

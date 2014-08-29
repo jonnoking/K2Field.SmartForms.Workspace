@@ -167,6 +167,21 @@ namespace K2Field.SmartForms.Workspace.Data
             }
         }
 
+        private int minheight;
+        public int MinHeight
+        {
+            get { return minheight; }
+            set
+            {
+                if (minheight != value)
+                {
+                    minheight = value;
+                    NotifyPropertyChanged("MinHeight");
+                }
+            }
+        }
+
+
         private ObservableCollection<WorkspaceLink> childlinks;
         public virtual ObservableCollection<WorkspaceLink> ChildLinks
         {
