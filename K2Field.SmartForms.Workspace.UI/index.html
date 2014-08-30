@@ -51,7 +51,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index.html">K2 Workbench</a>
+                <a class="navbar-brand" href="index.html" data-bind="text: workspace().DisplayName()"></a>
             </div>
             <!-- /.navbar-header -->
 
@@ -268,7 +268,7 @@
             <div class="navbar-default sidebar" role="navigation">
                 <div class="sidebar-nav navbar-collapse">
                     <ul class="nav" id="side-menu">
-                        <li class="sidebar-search">
+                        <!--<li class="sidebar-search">
                             <div class="input-group custom-search-form">
                                 <input type="text" class="form-control" placeholder="Search...">
                                 <span class="input-group-btn">
@@ -277,8 +277,7 @@
                                 </button>
                             </span>
                             </div>
-                            <!-- /input-group -->
-                        </li>
+                        </li>-->
 
 
                             <!--ko foreach: workspace().Links() -->
@@ -974,6 +973,8 @@
     <script src="js/knockout-3.2.0.js"></script>
     <script src="js/knockout.mapping-latest.js"></script>
 
+    <script src="js/plugins/linqjs/linq.js"></script>
+    <script src="js/plugins/linqjs/jquery.linq.js"></script>
 
     <script type="text/javascript">
 
@@ -1019,8 +1020,15 @@
         if (data && data.Links) {
             this.Links = ko.observableArray([]);
 
-            for (var i = 0; i < data.Links.length; i++) {
-                this.Links.push(new kolink(data.Links[i]));
+            // order links on sequence
+            var orderedLinks = Enumerable.From(data.Links).OrderBy(function (item) { return item.Sequence }).ToArray();
+
+            //for (var i = 0; i < data.Links.length; i++) {
+            //    this.Links.push(new kolink(data.Links[i]));
+            //}
+
+            for (var i = 0; i < orderedLinks.length; i++) {
+                this.Links.push(new kolink(orderedLinks[i]));
             }
 
         } else {
@@ -1105,8 +1113,15 @@
         if (data && data.ChildLinks) {
             this.ChildLinks = ko.observableArray([]);
 
-            for (var i = 0; i < data.ChildLinks.length; i++) {
-                this.ChildLinks.push(new kolink(data.ChildLinks[i]));
+            // order links on sequence
+            var orderedLinks = Enumerable.From(data.ChildLinks).OrderBy(function (item) { return item.Sequence }).ToArray();
+
+            //for (var i = 0; i < data.ChildLinks.length; i++) {
+            //    this.ChildLinks.push(new kolink(data.ChildLinks[i]));
+            //}
+
+            for (var i = 0; i < orderedLinks.length; i++) {
+                this.ChildLinks.push(new kolink(orderedLinks[i]));
             }
 
             //this.IsHeading = ko.computed(function () {
@@ -1150,6 +1165,7 @@
                 },
                 success: function (data) {
                     workspaceViewModel.rawWorkspace = data;
+
                     //locationViewModel.location(ko.mapping.fromJS(data));
                     workspaceViewModel.workspace(new koworkspace(data));
 
@@ -1196,7 +1212,6 @@
     };
 
     workspaceViewModel.load('9b6f76bf-ab2f-e411-8375-000c297c26af');
-    var ii = 0;
 
 
     $(document).on("workspaceLoadSuccess", function () {

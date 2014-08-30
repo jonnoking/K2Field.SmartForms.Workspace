@@ -119,8 +119,10 @@
     <Content Include="js\bootstrap.js" />
     <Content Include="js\bootstrap.min.js" />
     <Content Include="js\jquery-1.11.0.js" />
+    <Content Include="js\plugins\linqjs\jquery.linq.js" />
     <Content Include="js\knockout-3.2.0.js" />
     <Content Include="js\knockout.mapping-latest.js" />
+    <Content Include="js\plugins\linqjs\linq.js" />
     <Content Include="js\plugins\dataTables\dataTables.bootstrap.js" />
     <Content Include="js\plugins\dataTables\jquery.dataTables.js" />
     <Content Include="js\plugins\flot\excanvas.min.js" />

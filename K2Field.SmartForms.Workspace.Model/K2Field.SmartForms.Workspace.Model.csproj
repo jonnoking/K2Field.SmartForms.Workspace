@@ -48,6 +48,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ApplicationUnit.cs" />
+    <Compile Include="WorkspaceRepository.cs" />
     <Compile Include="GenericRepository.cs" />
     <Compile Include="IRepository.cs" />
     <Compile Include="WorkspaceContext.cs" />
