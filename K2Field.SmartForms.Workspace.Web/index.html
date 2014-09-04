@@ -537,13 +537,159 @@
 
         }
 
+        function koidentity(data) {
+
+            if (data && data.IdentityName) {
+                this.IdentityName = ko.observable(data.IdentityName);
+            } else {
+                this.IdentityName = ko.observable();
+            }
+
+            if (data && data.IsAuthenticated) {
+                this.IsAuthenticated = ko.observable(data.IsAuthenticated);
+            } else {
+                this.IsAuthenticated = ko.observable();
+            }
+
+            if (data && data.AuthenticationType) {
+                this.AuthenticationType = ko.observable(data.AuthenticationType);
+            } else {
+                this.AuthenticationType = ko.observable();
+            }
+
+            if (data && data.Claims) {
+                this.Claims = ko.observableArray([]);
+
+                for (var i = 0; i < data.Claims.length; i++) {
+                    this.Claims.push(new koclaim(data.Claims[i]));
+                }
+            }
+        }
+
+
+        function koclaim(data) {
+
+            if (data && data.Type) {
+                this.Type = ko.observable(data.Type);
+            } else {
+                this.Type = ko.observable();
+            }
+
+            if (data && data.Value) {
+                this.Value = ko.observable(data.Value);
+            } else {
+                this.Value = ko.observable();
+            }
+        }
+
+
+        function koworkspaceuser(data) {
+
+            if (data && data.Username) {
+                this.Username = ko.observable(data.Username);
+            } else {
+                this.Username = ko.observable();
+            }
+
+            if (data && data.DisplayName) {
+                this.DisplayName = ko.observable(data.DisplayName);
+            } else {
+                this.DisplayName = ko.observable();
+            }
+            if (data && data.FQN) {
+                this.FQN = ko.observable(data.FQN);
+            } else {
+                this.FQN = ko.observable();
+            }
+            if (data && data.Email) {
+                this.Email = ko.observable(data.Email);
+            } else {
+                this.Email = ko.observable();
+            }
+            if (data && data.IsActive) {
+                this.IsActive = ko.observable(data.IsActive);
+            } else {
+                this.IsActive = ko.observable();
+            }
+            if (data && data.Workspaces) {
+                this.Workspaces = ko.observableArray([]);
+
+                for (var i = 0; i < data.Workspaces.length; i++) {
+                    this.Workspaces.push(new koworkspace(data.Workspaces[i]));
+                }
+            }
+        }
+
         //var baseUrl = "http://localhost:1476";
         var baseUrl = "https://localhost:44302";
 
         var workspaceViewModel = {
 
             rawWorkspace: [],
-            workspace: ko.observable(),
+            workspace: ko.observable([]),
+            identity: ko.observable([]),
+            rawIdentity: [],
+            workspaceUser: ko.observable([]),
+            rawWorkspaceUser: [],
+
+            getIdentity: function () {
+                $.ajax({
+                    url: baseUrl + '/api/identity/',
+                    method: 'GET',
+                    dataType: 'json',
+                    xhrFields: {
+                        withCredentials: true
+                    },
+                    success: function (data) {
+                        workspaceViewModel.rawIdentity = data;
+
+                        workspaceViewModel.identity(new koidentity(data));
+
+                        $.event.trigger("identityGetSuccess");
+
+                    },
+                    error: function (request, textStatus, errorThrown) {
+                        $.event.trigger('identityGetError');
+
+                        alert("Error: " + textStatus + " :: " + errorThrown);
+                    },
+                    complete: function (request, textStatus) {
+                        $.event.trigger('identityGetComplete');
+
+                    }
+                });
+
+            },
+
+            getProfile: function () {
+                $.ajax({
+                    url: baseUrl + '/api/workspaceUser/?username='+workspaceViewModel.identity().Username(),
+                    method: 'GET',
+                    dataType: 'json',
+                    xhrFields: {
+                        withCredentials: true
+                    },
+                    success: function (data) {
+                        workspaceViewModel.rawWorkspaceUser = data;
+
+                        workspaceViewModel.workspaceUser(new koworkspaceuser(data));
+
+                        $.event.trigger("getProfileGetSuccess");
+
+                    },
+                    error: function (request, textStatus, errorThrown) {
+                        $.event.trigger('getProfileGetError');
+
+                        alert("Error: " + textStatus + " :: " + errorThrown);
+                    },
+                    complete: function (request, textStatus) {
+                        $.event.trigger('getProfileGetComplete');
+
+                    }
+                });
+
+            },
+
 
             load: function (id) {
                 $.ajax({
@@ -574,15 +720,81 @@
 
             },
 
+            loadLinkLocal: function (id) {
+                var link;
+                link = workspaceViewModel.findLink(workspaceViewModel.workspace().Links(), id);
+                if (link != false) {
+                    workspaceViewModel.selectedLink = link;
+                }
+
+                return link;
+            },
+
+            findLink: function (links, id) {
+                for (var i = 0; i < links.length; i++) {
+                    if (links[i].Id() == id) {
+                        return links[i];
+                    } else if (links[i].ChildLinks().length > 0) {
+                        var l = workspaceViewModel.findLink(links[i].ChildLinks(), id);
+                        if (l != false) {
+                            return l;
+                        }
+                    }
+                }
+                return false;
+            },
+
+
         };
 
-        workspaceViewModel.load('9c6537b4-6823-e411-8374-000c297c26af');
+        //workspaceViewModel.load('9c6537b4-6823-e411-8374-000c297c26af');
         var ii = 0;
 
 
-        $(document).on("workspaceLoadSuccess", function () {
+        $(document).on("getProfileGetSuccess", function () {
             ko.applyBindings(workspaceViewModel);
+
+            // for side menu
+            $('#side-menu').metisMenu();
+
+            // loads iframe on menu click
+            $('a.linkurl').on('click', function (e) {
+                e.preventDefault();
+                var url = $(this).attr('href');
+                if (url != '' && (url != window.location.href && url != '#')) {
+                    $('#contentFrame').attr('src', url);
+                }
+
+                // get id
+                var selectedLink = workspaceViewModel.loadLinkLocal(e.target.id);
+
+                if (selectedLink != false) {
+                    if (selectedLink.MinHeight() > 0) {
+                        $('#contentFrame').css('min-height', selectedLink.MinHeight() + 'px');
+                    } else {
+                        $('#contentFrame').css('min-height', '100%');
+                    }
+                }
+
+            });
+
+            $('#contentFrame').load(function () {
+
+                //$('#contentFrame').css('min-height', '100%');
+                $('#contentFrame').css('min-width', '100%');
+
+                //$(this).height($(this).contents().height());
+                //$(this).width($(this).contents().width());            
+
+            });
+
         });
+
+        $(document).on("identityGetSuccess", function () {
+            workspaceViewModel.getProfile();
+        });
+
+        workspaceViewModel.getIdentity();
 
     </script>
 

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
 using System.Linq;
@@ -52,8 +53,30 @@ namespace K2Field.SmartForms.Workspace.Model
 
         public virtual K2Field.SmartForms.Workspace.Data.WorkspaceUser Find(string username)
         {
-            return DBSet.Find(username);
+            Data.WorkspaceUser u = DBSet.Find(username);
+
+            ObservableCollection<Data.Workspace> ws = new ObservableCollection<Data.Workspace>();
+
+            foreach (Data.WorkspaceTeam t in u.WorkspaceTeams)
+            {
+                foreach (Data.Workspace w in t.Workspaces)
+                {
+                    ws.Add(w);
+                }
+            }
+
+            u.Workspaces = ws;
+
+            return u;
+
+            //return DBSet.Find(username);
         }
+
+        //private List<Data.Workspace> GetWorkspaces(string username)
+        //{
+        //    GenericRepository<Data.Workspace> wsrep = new GenericRepository<Data.Workspace>(Context);
+        //    wsrep.All().Select(p => p.WorkspaceTeams.Where(q => q.WorkspaceUsers.))
+        //}
 
         public virtual void Add(K2Field.SmartForms.Workspace.Data.WorkspaceUser entity)
         {

@@ -26,9 +26,11 @@ namespace K2Field.SmartForms.Workspace.API.Controllers.API
         }
 
         [EnableCors(origins: "*", headers: "*", methods: "*", SupportsCredentials = true)]
-        public IHttpActionResult Get(string username)
+        public IHttpActionResult Get([FromUri] string username)
         {
-            string u = username.Replace("_s_", @"\");
+            string us = username.ToString();
+
+            string u = us.Replace("_s_", @"\");
             try
             {
                 return Ok(_unit.WorkspaceUsers.Find(u));
