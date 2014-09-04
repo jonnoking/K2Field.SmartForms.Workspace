@@ -1175,7 +1175,6 @@
         }
     }
 
-
     function koclaim(data) {
 
         if (data && data.Type) {
@@ -1191,18 +1190,62 @@
         }
     }
 
+    function koworkspaceuser(data) {
+
+        if (data && data.Username) {
+            this.Username = ko.observable(data.Username);
+        } else {
+            this.Username = ko.observable();
+        }
+
+        if (data && data.DisplayName) {
+            this.DisplayName = ko.observable(data.DisplayName);
+        } else {
+            this.DisplayName = ko.observable();
+        }
+        if (data && data.FQN) {
+            this.FQN = ko.observable(data.FQN);
+        } else {
+            this.FQN = ko.observable();
+        }
+        if (data && data.Email) {
+            this.Email = ko.observable(data.Email);
+        } else {
+            this.Email = ko.observable();
+        }
+        if (data && data.IsActive) {
+            this.IsActive = ko.observable(data.IsActive);
+        } else {
+            this.IsActive = ko.observable();
+        }
+        if (data && data.Workspaces) {
+            this.Workspaces = ko.observableArray([]);
+
+            for (var i = 0; i < data.Workspaces.length; i++) {
+                this.Workspaces.push(new koworkspace(data.Workspaces[i]));
+            }
+        }
+    }
+
+
     var baseUrl = "http://localhost:1476";
     //var baseUrl = "https://localhost:44302";
 
     var workspaceViewModel = {
 
-        rawWorkspace: [],
-        workspace: ko.observable(),
-        selectedLink : ko.observable(),
         identity: ko.observable(),
         rawIdentity: [],
 
-        getIdentity: function() {
+
+        workspaceUser: ko.observable(),
+        rawWorkspaceUser: [],
+
+        rawWorkspace: [],
+        workspace: ko.observable(),
+
+        activeWorkspace: ko.observable(),
+
+        getIdentity: function () {
             $.ajax({
                 url: baseUrl + '/api/identity/',
                 method: 'GET',
@@ -1228,12 +1271,43 @@
 
                 }
             });
+        },
 
+        getProfile: function () {
+            $.ajax({
+                url: baseUrl + '/api/workspaceUser/?username='+workspaceViewModel.identity().IdentityName(),
+                method: 'GET',
+                dataType: 'json',
+                xhrFields: {
+                    withCredentials: true
+                },
+                success: function (data) {
+                    workspaceViewModel.rawWorkspaceUser = data;
+
+                    workspaceViewModel.workspaceUser(new koworkspaceuser(data));
+
+                    // set default/active workspace
+                    workspaceViewModel.activeWorkspace(workspaceViewModel.workspaceUser().Workspaces()[0]);
+                    workspaceViewModel.workspace(workspaceViewModel.activeWorkspace());
+
+                    $.event.trigger("getProfileGetSuccess");
+
+                },
+                error: function (request, textStatus, errorThrown) {
+                    $.event.trigger('getProfileGetError');
+
+                    alert("Error: " + textStatus + " :: " + errorThrown);
+                },
+                complete: function (request, textStatus) {
+                    $.event.trigger('getProfileGetComplete');
+
+                }
+            });
         },
 
         load: function (id) {
             $.ajax({
-                url: baseUrl + '/api/workspace/' + id,
+                url: baseUrl+'/api/workspace/' + id,
                 method: 'GET',
                 dataType: 'json',
                 xhrFields: {
@@ -1241,7 +1315,6 @@
                 },
                 success: function (data) {
                     workspaceViewModel.rawWorkspace = data;
-
                     //locationViewModel.location(ko.mapping.fromJS(data));
                     workspaceViewModel.workspace(new koworkspace(data));
 
@@ -1258,7 +1331,6 @@
 
                 }
             });
-
         },
 
         loadLinkLocal: function (id) {
@@ -1284,14 +1356,13 @@
             }
             return false;
         },
-
     };
 
-    workspaceViewModel.load('9b6f76bf-ab2f-e411-8375-000c297c26af');
+    //workspaceViewModel.load('9c6537b4-6823-e411-8374-000c297c26af');
+    var ii = 0;
 
 
-    $(document).on("workspaceLoadSuccess", function () {
-
+    $(document).on("getProfileGetSuccess", function () {
         ko.applyBindings(workspaceViewModel);
 
         // for side menu
@@ -1310,7 +1381,7 @@
 
             if (selectedLink != false) {
                 if (selectedLink.MinHeight() > 0) {
-                    $('#contentFrame').css('min-height', selectedLink.MinHeight()+'px');
+                    $('#contentFrame').css('min-height', selectedLink.MinHeight() + 'px');
                 } else {
                     $('#contentFrame').css('min-height', '100%');
                 }
@@ -1318,25 +1389,25 @@
 
         });
 
-
         $('#contentFrame').load(function () {
 
             //$('#contentFrame').css('min-height', '100%');
             $('#contentFrame').css('min-width', '100%');
 
             //$(this).height($(this).contents().height());
-            //$(this).width($(this).contents().width());
-
-
-            
+            //$(this).width($(this).contents().width());            
 
         });
 
-
     });
 
-    </script>
+    $(document).on("identityGetSuccess", function () {
+        workspaceViewModel.getProfile();
+    });
 
+    workspaceViewModel.getIdentity();
+
+    </script>
 
 
 
