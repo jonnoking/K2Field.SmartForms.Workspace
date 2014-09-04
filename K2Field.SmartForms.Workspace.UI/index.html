@@ -60,19 +60,16 @@
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">
                         <i class="fa fa-envelope fa-fw"></i>  <i class="fa fa-caret-down"></i>
                     </a>
-                    <ul class="dropdown-menu dropdown-messages">
+                    <ul class="dropdown-menu dropdown-messages" data-bind="foreach: workspaceUser().Workspaces()">
                         <li>
                             <a href="#">
                                 <div>
-                                    <strong>John Smith</strong>
-                                    <span class="pull-right text-muted">
-                                        <em>Yesterday</em>
-                                    </span>
+                                    <strong data-bind="text: DisplayName()"></strong>
                                 </div>
-                                <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eleifend...</div>
+                                <div data-bind="text: Description()"></div>
                             </a>
                         </li>
-                        <li class="divider"></li>
+                        <!--<li class="divider"></li>
                         <li>
                             <a href="#">
                                 <div>
@@ -102,7 +99,7 @@
                                 <strong>Read All Messages</strong>
                                 <i class="fa fa-angle-right"></i>
                             </a>
-                        </li>
+                        </li>-->
                     </ul>
                     <!-- /.dropdown-messages -->
                 </li>
@@ -996,6 +993,12 @@
             this.DisplayName = ko.observable(data.DisplayName);
         } else {
             this.DisplayName = ko.observable();
+        }
+
+        if (data && data.Description) {
+            this.Description = ko.observable(data.Description);
+        } else {
+            this.Description = ko.observable();
         }
 
         if (data && data.SmartFormsRuntimeUrl) {

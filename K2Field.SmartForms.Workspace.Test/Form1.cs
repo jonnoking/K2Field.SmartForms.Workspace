@@ -36,6 +36,7 @@ namespace K2Field.SmartForms.Workspace.Test
                 {
                     Name = "team1",
                     DisplayName = "Team 1",
+                    Description = "team description team description team description",
                     IsActive = true,
                     WorkspaceUsers = r,                    
                 };
@@ -50,7 +51,7 @@ namespace K2Field.SmartForms.Workspace.Test
                     Url = "https://k2.denallix.com/Runtime/Runtime/View/Demo+CRM+Account+List/",
                     Type = "Link",
                     Icon = "fa fa-bar-chart-o fa-fw",
-                    MinHeight = 500
+                    MinHeight = 150
                 };
 
                 Data.WorkspaceLink link1b = new Data.WorkspaceLink()
@@ -76,7 +77,7 @@ namespace K2Field.SmartForms.Workspace.Test
                     Url = "https://k2.denallix.com/Runtime/Runtime/View/Demo+CRM+Account+List/",
                     Type = "Link",
                     Icon = "fa fa-bar-chart-o fa-fw",
-                    MinHeight = 500
+                    MinHeight = 300
                 };
 
                 ObservableCollection<Data.WorkspaceLink> tasks = new ObservableCollection<Data.WorkspaceLink>();
@@ -131,7 +132,15 @@ namespace K2Field.SmartForms.Workspace.Test
                 //unit.WorklistUsers.Add(u);
 
 
-                Data.Workspace w = new Data.Workspace() { DisplayName = "Workspace", Name = "workspace", SmartFormsRuntimeUrl = "https://k2.denallix.com/runtime/", Links = headings };
+                Data.Workspace w = new Data.Workspace() 
+                { 
+                    DisplayName = "Workspace", 
+                    Name = "workspace",
+                    Description = "workspace description workspace description workspace description",
+                    SmartFormsRuntimeUrl = "https://k2.denallix.com/runtime/", 
+                    Links = headings 
+                };
+
                 w.WorkspaceTeams = new ObservableCollection<Data.WorkspaceTeam>();
                 w.WorkspaceTeams.Add(t);
 
