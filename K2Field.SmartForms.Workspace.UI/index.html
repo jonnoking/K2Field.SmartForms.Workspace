@@ -58,13 +58,13 @@
             <ul class="nav navbar-top-links navbar-right">
                 <li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                        <i class="fa fa-envelope fa-fw"></i>  <i class="fa fa-caret-down"></i>
+                        <i class="fa fa-tablet fa-fw"></i>  <i class="fa fa-caret-down"></i>
                     </a>
                     <ul class="dropdown-menu dropdown-messages" data-bind="foreach: workspaceUser().Workspaces()">
                         <li>
-                            <a href="#">
+                            <a class="workspaceselect" data-bind="attr: {id: Id()}" href="#">
                                 <div>
-                                    <strong data-bind="text: DisplayName()"></strong>
+                                    <i class="fa fa-tablet fa-2x"></i>&nbsp;&nbsp;<strong data-bind="text: DisplayName()"></strong>
                                 </div>
                                 <div data-bind="text: Description()"></div>
                             </a>
@@ -104,7 +104,7 @@
                     <!-- /.dropdown-messages -->
                 </li>
                 <!-- /.dropdown -->
-                <li class="dropdown">
+                <!-- <li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">
                         <i class="fa fa-tasks fa-fw"></i>  <i class="fa fa-caret-down"></i>
                     </a>
@@ -180,10 +180,9 @@
                             </a>
                         </li>
                     </ul>
-                    <!-- /.dropdown-tasks -->
-                </li>
-                <!-- /.dropdown -->
-                <li class="dropdown">
+                </li> -->
+
+                <!--<li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">
                         <i class="fa fa-bell fa-fw"></i>  <i class="fa fa-caret-down"></i>
                     </a>
@@ -240,8 +239,8 @@
                             </a>
                         </li>
                     </ul>
-                    <!-- /.dropdown-alerts -->
-                </li>
+                </li>-->
+
                 <!-- /.dropdown -->
                 <li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">
@@ -302,7 +301,7 @@
 
                             <!--/ko-->
 
-                            <li>
+                            <!--<li>
                                 <a class="active" href="index.html"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
                             </li>
                             <li>
@@ -315,7 +314,6 @@
                                         <a href="morris.html">Morris.js Charts</a>
                                     </li>
                                 </ul>
-                                <!-- /.nav-second-level -->
                             </li>
                             <li>
                                 <a href="tables.html"><i class="fa fa-table fa-fw"></i> Tables</a>
@@ -342,7 +340,6 @@
                                         <a href="grid.html">Grid</a>
                                     </li>
                                 </ul>
-                                <!-- /.nav-second-level -->
                             </li>
                             <li>
                                 <a href="#"><i class="fa fa-sitemap fa-fw"></i> Multi-Level Dropdown<span class="fa arrow"></span></a>
@@ -369,10 +366,8 @@
                                                 <a href="#">Third Level Item</a>
                                             </li>
                                         </ul>
-                                        <!-- /.nav-third-level -->
                                     </li>
-                                </ul>
-                                <!-- /.nav-second-level -->
+                                </ul>                                
                             </li>
                             <li>
                                 <a href="#"><i class="fa fa-files-o fa-fw"></i> Sample Pages<span class="fa arrow"></span></a>
@@ -383,9 +378,8 @@
                                     <li>
                                         <a href="login.html">Login Page</a>
                                     </li>
-                                </ul>
-                                <!-- /.nav-second-level -->
-                            </li>
+                                </ul>     
+                            </li>-->
                         </ul>
                 </div>
                 <!-- /.sidebar-collapse -->

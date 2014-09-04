@@ -134,21 +134,66 @@ namespace K2Field.SmartForms.Workspace.Test
 
                 Data.Workspace w = new Data.Workspace() 
                 { 
-                    DisplayName = "Workspace", 
-                    Name = "workspace",
-                    Description = "workspace description workspace description workspace description",
+                    DisplayName = "K2 Workdesck", 
+                    Name = "K2workdesk",
+                    Description = "K2 Workdesk description....",
                     SmartFormsRuntimeUrl = "https://k2.denallix.com/runtime/", 
                     Links = headings 
+                };
+
+                Data.Workspace w1 = new Data.Workspace()
+                {
+                    DisplayName = "K2 HR Workdesk",
+                    Name = "k2hrworkspace",
+                    Description = "K2 HR Workdesk description...",
+                    SmartFormsRuntimeUrl = "https://k2.denallix.com/runtime/",
+                    Links = headings
+                };
+
+                Data.Workspace w2 = new Data.Workspace()
+                {
+                    DisplayName = "K2 Finance Workdesk",
+                    Name = "k2financeworkspace",
+                    Description = "K2 Finance Workdesk description...",
+                    SmartFormsRuntimeUrl = "https://k2.denallix.com/runtime/",
+                    Links = headings
                 };
 
                 w.WorkspaceTeams = new ObservableCollection<Data.WorkspaceTeam>();
                 w.WorkspaceTeams.Add(t);
 
+                w1.WorkspaceTeams = new ObservableCollection<Data.WorkspaceTeam>();
+                w1.WorkspaceTeams.Add(t);
+
+                w2.WorkspaceTeams = new ObservableCollection<Data.WorkspaceTeam>();
+                w2.WorkspaceTeams.Add(t);
+
                 //unit.WorkspaceTeams.Add(t);
                 unit.Workspaces.Add(w);
+                unit.Workspaces.Add(w1);
+                unit.Workspaces.Add(w2);
 
                 int rows = unit.SaveChanges();
                 MessageBox.Show("Rows: " + rows);
+
+
+                //w1.WorkspaceTeams = new ObservableCollection<Data.WorkspaceTeam>();
+                //w1.WorkspaceTeams.Add(t);
+                //w1.Links = headings;
+
+                //unit.Workspaces.Update(w1);
+                //rows = unit.SaveChanges();
+                //MessageBox.Show("Rows: " + rows);
+
+                //// throws error
+                //w2.WorkspaceTeams = new ObservableCollection<Data.WorkspaceTeam>();
+                //w2.WorkspaceTeams.Add(t);
+                //w2.Links = headings;
+                
+                //unit.Workspaces.Update(w2);
+                //rows = unit.SaveChanges();
+                //MessageBox.Show("Rows: " + rows);
+
             }
 
             //using (var context = new K2Field.SmartForms.Workspace.Model.WorkspaceContext())

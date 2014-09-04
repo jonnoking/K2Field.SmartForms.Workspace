@@ -48,6 +48,21 @@ namespace K2Field.SmartForms.Workspace.Model
                   mc.MapRightKey("WorkspaceTeamId");
               });
 
+            modelBuilder.Entity<Data.Workspace>().HasMany(r => r.Links).WithMany(u => u.Workspaces)
+              .Map(mc =>
+              {
+                  mc.ToTable("WorkspaceLinksWorkspaces");
+                  mc.MapLeftKey("WorkspaceId");
+                  mc.MapRightKey("WorkspaceLinkId");
+              });
+
+            modelBuilder.Entity<Data.WorkspaceLink>().HasMany(r => r.ChildLinks).WithMany(u => u.ParentLinks)
+              .Map(mc =>
+              {
+                  mc.ToTable("WorkspaceLinksWorkspacesLinks");
+                  mc.MapLeftKey("WorkspaceLinkChildId");
+                  mc.MapRightKey("WorkspaceLinkParentId");
+              });
 
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
 

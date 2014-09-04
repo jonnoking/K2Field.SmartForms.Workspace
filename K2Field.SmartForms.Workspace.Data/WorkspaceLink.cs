@@ -199,6 +199,41 @@ namespace K2Field.SmartForms.Workspace.Data
             }
         }
 
+        private ObservableCollection<WorkspaceLink> parentlinks;
+        public virtual ObservableCollection<WorkspaceLink> ParentLinks
+        {
+            get
+            {
+                return parentlinks;
+            }
+            set
+            {
+                if (parentlinks != value)
+                {
+                    parentlinks = value;
+                    NotifyPropertyChanged("ParentLinks");
+                }
+            }
+        }
+
+
+        private ObservableCollection<Workspace> workspaces;
+        public virtual ObservableCollection<Workspace> Workspaces
+        {
+            get
+            {
+                return workspaces;
+            }
+            set
+            {
+                if (workspaces != value)
+                {
+                    workspaces = value;
+                    NotifyPropertyChanged("Workspaces");
+                }
+            }
+        }
+
 
         //public event PropertyChangedEventHandler PropertyChanged;
         //public void NotifyPropertyChanged(string propertyName)
