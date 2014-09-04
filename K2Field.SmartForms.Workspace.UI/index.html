@@ -1146,6 +1146,51 @@
 
     }
 
+    function koidentity(data) {
+
+        if (data && data.IdentityName) {
+            this.IdentityName = ko.observable(data.IdentityName);
+        } else {
+            this.IdentityName = ko.observable();
+        }
+
+        if (data && data.IsAuthenticated) {
+            this.IsAuthenticated = ko.observable(data.IsAuthenticated);
+        } else {
+            this.IsAuthenticated = ko.observable();
+        }
+
+        if (data && data.AuthenticationType) {
+            this.AuthenticationType = ko.observable(data.AuthenticationType);
+        } else {
+            this.AuthenticationType = ko.observable();
+        }
+
+        if (data && data.Claims) {
+            this.Claims = ko.observableArray([]);
+
+            for (var i = 0; i < data.Claims.length; i++) {
+                this.Claims.push(new koclaim(data.Claims[i]));
+            }
+        }
+    }
+
+
+    function koclaim(data) {
+
+        if (data && data.Type) {
+            this.Type = ko.observable(data.Type);
+        } else {
+            this.Type = ko.observable();
+        }
+
+        if (data && data.Value) {
+            this.Value = ko.observable(data.Value);
+        } else {
+            this.Value = ko.observable();
+        }
+    }
+
     var baseUrl = "http://localhost:1476";
     //var baseUrl = "https://localhost:44302";
 
@@ -1154,6 +1199,37 @@
         rawWorkspace: [],
         workspace: ko.observable(),
         selectedLink : ko.observable(),
+        identity: ko.observable(),
+        rawIdentity: [],
+
+        getIdentity: function() {
+            $.ajax({
+                url: baseUrl + '/api/identity/',
+                method: 'GET',
+                dataType: 'json',
+                xhrFields: {
+                    withCredentials: true
+                },
+                success: function (data) {
+                    workspaceViewModel.rawIdentity = data;
+
+                    workspaceViewModel.identity(new koidentity(data));
+
+                    $.event.trigger("identityGetSuccess");
+
+                },
+                error: function (request, textStatus, errorThrown) {
+                    $.event.trigger('identityGetError');
+
+                    alert("Error: " + textStatus + " :: " + errorThrown);
+                },
+                complete: function (request, textStatus) {
+                    $.event.trigger('identityGetComplete');
+
+                }
+            });
+
+        },
 
         load: function (id) {
             $.ajax({

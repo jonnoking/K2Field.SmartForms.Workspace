@@ -99,5 +99,23 @@ namespace K2Field.SmartForms.Workspace.Data
             }
         }
 
+        private ObservableCollection<WorkspaceTeam> workspaceteams;
+        public virtual ObservableCollection<WorkspaceTeam> WorkspaceTeams
+        {
+            get
+            {
+                return workspaceteams;
+            }
+            set
+            {
+                if (workspaceteams != value)
+                {
+                    workspaceteams = value;
+                    NotifyPropertyChanged("WorkspaceTeams");
+                }
+            }
+        }
+
+
     }
 }

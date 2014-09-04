@@ -96,19 +96,19 @@ namespace K2Field.SmartForms.Workspace.Data
             }
         }
 
-        private ObservableCollection<WorkspaceTeam> roles;
-        public virtual ObservableCollection<WorkspaceTeam> Roles
+        private ObservableCollection<WorkspaceTeam> workspaceteams;
+        public virtual ObservableCollection<WorkspaceTeam> WorkspaceTeams
         {
             get
             {
-                return roles;
+                return workspaceteams;
             }
             set
             {
-                if (roles != value)
+                if (workspaceteams != value)
                 {
-                    roles = value;
-                    NotifyPropertyChanged("Roles");
+                    workspaceteams = value;
+                    NotifyPropertyChanged("WorkspaceTeams");
                 }
             }
         }

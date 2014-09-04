@@ -31,6 +31,24 @@ namespace K2Field.SmartForms.Workspace.Model
             //modelBuilder.Entity<Data.CaseUser>().Ignore(p => p.FullName);
             //modelBuilder.Entity<Data.CaseInstance>().Ignore(p => p.ExceedsExpected);
 
+            // team - user m:m
+            modelBuilder.Entity<Data.WorkspaceTeam>().HasMany(r => r.WorkspaceUsers).WithMany(u => u.WorkspaceTeams)
+              .Map(mc =>
+              {
+                  mc.ToTable("WorkspaceTeamUsers");
+                  mc.MapLeftKey("WorkspaceTeamId");
+                  mc.MapRightKey("WorkspaceUserId");
+              });
+
+            modelBuilder.Entity<Data.Workspace>().HasMany(r => r.WorkspaceTeams).WithMany(u => u.Workspaces)
+              .Map(mc =>
+              {
+                  mc.ToTable("WorkspaceTeamWorkspaces");
+                  mc.MapLeftKey("WorkspaceId");
+                  mc.MapRightKey("WorkspaceTeamId");
+              });
+
+
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
 
             //base.OnModelCreating(modelBuilder);

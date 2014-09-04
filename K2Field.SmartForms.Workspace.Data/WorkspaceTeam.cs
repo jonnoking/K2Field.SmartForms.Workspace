@@ -114,5 +114,22 @@ namespace K2Field.SmartForms.Workspace.Data
                 }
             }
         }
+
+        private ObservableCollection<Workspace> workspaces;
+        public virtual ObservableCollection<Workspace> Workspaces
+        {
+            get
+            {
+                return workspaces;
+            }
+            set
+            {
+                if (workspaces != value)
+                {
+                    workspaces = value;
+                    NotifyPropertyChanged("Workspaces");
+                }
+            }
+        }
     }
 }

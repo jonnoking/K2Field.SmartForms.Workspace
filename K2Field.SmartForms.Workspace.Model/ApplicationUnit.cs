@@ -13,7 +13,8 @@ namespace K2Field.SmartForms.Workspace.Model
         private IRepository<Data.Workspace> _workspace = null;
         private IRepository<Data.WorkspaceLink> _workspacelink = null;
         private IRepository<Data.WorkspaceTeam> _workspaceteam = null;
-        private IRepository<Data.WorkspaceUser> _workspaceuser = null;
+        //private IRepository<Data.WorkspaceUser> _workspaceuser = null;
+        private WorkspaceUserRepository _workspaceuser = null;
 
 
         public IRepository<Data.Workspace> Workspaces
@@ -28,7 +29,7 @@ namespace K2Field.SmartForms.Workspace.Model
             }
         }
 
-        public IRepository<Data.WorkspaceLink> WorklistLinks
+        public IRepository<Data.WorkspaceLink> WorkspaceLinks
         {
             get
             {
@@ -40,7 +41,7 @@ namespace K2Field.SmartForms.Workspace.Model
             }
         }
 
-        public IRepository<Data.WorkspaceTeam> WorklistTeams
+        public IRepository<Data.WorkspaceTeam> WorkspaceTeams
         {
             get
             {
@@ -52,13 +53,13 @@ namespace K2Field.SmartForms.Workspace.Model
             }
         }
 
-        public IRepository<Data.WorkspaceUser> WorklistUsers
+        public WorkspaceUserRepository WorkspaceUsers
         {
             get
             {
                 if (this._workspaceuser == null)
                 {
-                    this._workspaceuser = new GenericRepository<Data.WorkspaceUser>(this._context);
+                    this._workspaceuser = new WorkspaceUserRepository(this._context);
                 }
                 return this._workspaceuser;
             }

@@ -27,9 +27,18 @@ namespace K2Field.SmartForms.Workspace.Test
 
             using (var unit = new ApplicationUnit())
             {
-                Data.WorkspaceUser u = new Data.WorkspaceUser() { Username = @"K2:denallix\administrator", FQN = @"denallix\administrator", DisplayName = "Administrator", Email = "administrator@denallix.com", IsActive = true };
+                Data.WorkspaceUser u = new Data.WorkspaceUser() { Username = @"denallix\administrator", FQN = @"denallix\administrator", DisplayName = "Administrator", Email = "administrator@denallix.com", IsActive = true };
 
+                ObservableCollection<Data.WorkspaceUser> r = new ObservableCollection<Data.WorkspaceUser>();
+                r.Add(u);
 
+                Data.WorkspaceTeam t = new Data.WorkspaceTeam()
+                {
+                    Name = "team1",
+                    DisplayName = "Team 1",
+                    IsActive = true,
+                    WorkspaceUsers = r,                    
+                };
 
                 Data.WorkspaceLink link1a = new Data.WorkspaceLink()
                 {
@@ -119,9 +128,14 @@ namespace K2Field.SmartForms.Workspace.Test
                     //Url = "https://k2.denallix.com/Runtime/Runtime/View/Demo+CRM+Account+List/",
                 
 
-                unit.WorklistUsers.Add(u);
+                //unit.WorklistUsers.Add(u);
+
 
                 Data.Workspace w = new Data.Workspace() { DisplayName = "Workspace", Name = "workspace", SmartFormsRuntimeUrl = "https://k2.denallix.com/runtime/", Links = headings };
+                w.WorkspaceTeams = new ObservableCollection<Data.WorkspaceTeam>();
+                w.WorkspaceTeams.Add(t);
+
+                //unit.WorkspaceTeams.Add(t);
                 unit.Workspaces.Add(w);
 
                 int rows = unit.SaveChanges();
