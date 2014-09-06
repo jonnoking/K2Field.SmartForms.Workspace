@@ -52,6 +52,19 @@ namespace K2Field.SmartForms.Workspace.Data
             }
         }
 
+        private string description;
+        public string Description
+        {
+            get { return description; }
+            set
+            {
+                if (description != value)
+                {
+                    description = value;
+                    NotifyPropertyChanged("Description");
+                }
+            }
+        }
         
         private string smartform;
         public string SmartForm

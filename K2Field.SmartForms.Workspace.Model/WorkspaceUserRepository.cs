@@ -57,15 +57,21 @@ namespace K2Field.SmartForms.Workspace.Model
 
             ObservableCollection<Data.Workspace> ws = new ObservableCollection<Data.Workspace>();
 
-            foreach (Data.WorkspaceTeam t in u.WorkspaceTeams)
+            if (u != null)
             {
-                foreach (Data.Workspace w in t.Workspaces)
+                foreach (Data.WorkspaceTeam t in u.WorkspaceTeams)
                 {
-                    ws.Add(w);
+                    foreach (Data.Workspace w in t.Workspaces)
+                    {
+                        if (!ws.Contains(w))
+                        {
+                            ws.Add(w);
+                        }
+                    }
                 }
-            }
 
-            u.Workspaces = ws;
+                u.Workspaces = ws;
+            }
 
             return u;
 

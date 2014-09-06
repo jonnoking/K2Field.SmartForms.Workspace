@@ -33,7 +33,15 @@ namespace K2Field.SmartForms.Workspace.API.Controllers.API
             string u = us.Replace("_s_", @"\");
             try
             {
-                return Ok(_unit.WorkspaceUsers.Find(u));
+                Data.WorkspaceUser user = _unit.WorkspaceUsers.Find(u);
+                if (user != null)
+                {
+                    return Ok(user);
+                }
+                else
+                {
+                    return NotFound();
+                }
             }
             catch (Exception ex)
             {

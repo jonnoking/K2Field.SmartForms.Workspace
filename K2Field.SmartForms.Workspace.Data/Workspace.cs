@@ -80,6 +80,21 @@ namespace K2Field.SmartForms.Workspace.Data
             }
         }
 
+        private string icon;
+        public string Icon
+        {
+            get { return icon; }
+            set
+            {
+                if (icon != value)
+                {
+                    icon = value;
+                    NotifyPropertyChanged("Icon");
+                }
+            }
+        }
+
+
         private WorkspaceLink starturl;
 
         public virtual WorkspaceLink StartUrl
